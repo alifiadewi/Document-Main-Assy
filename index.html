@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan Reject — Main Assy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page" id="sessionPage">
+    <header class="header">
+      <img src="assets/philips-shield.png" alt="" class="logo-icon" />
+      <img src="assets/philips-wordmark.png" alt="Philips" class="logo-wordmark" />
+    </header>
+
+    <main class="container">
+      <h1 class="title">Laporan Reject</h1>
+      <p class="required-note">Kolom dengan tanda <span class="required">*</span> wajib diisi.</p>
+
+      <form id="sessionForm" novalidate>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Nama <span class="required">*</span></label>
+            <input type="text" id="name" name="name" placeholder="cth. Satria Norata" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="shift">Shift <span class="required">*</span></label>
+            <select id="shift" name="shift"></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="line">Line <span class="required">*</span></label>
+          <select id="line" name="line">
+            <option value="" disabled selected>Pilih line</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="side">Side <span class="required">*</span></label>
+          <select id="side" name="side">
+            <option value="" disabled selected>Pilih side</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hxCode">HX code <span class="required">*</span></label>
+          <select id="hxCode" name="hxCode">
+            <option value="" disabled selected>Pilih HX code</option>
+          </select>
+        </div>
+
+        <p class="form-error" id="sessionError" role="alert" hidden></p>
+      </form>
+    </main>
+
+    <div class="submit-bar">
+      <button type="submit" form="sessionForm" class="submit-btn" id="sessionContinueBtn">Lanjut</button>
+    </div>
+  </div>
+
+  <div class="page" id="formPage" hidden>
+    <header class="header">
+      <img src="assets/philips-shield.png" alt="" class="logo-icon" />
+      <img src="assets/philips-wordmark.png" alt="Philips" class="logo-wordmark" />
+    </header>
+
+    <main class="container">
+      <p class="required-note">Kolom dengan tanda <span class="required">*</span> wajib diisi.</p>
+
+      <form id="reportForm" novalidate>
+
+        <div class="field">
+          <label for="rejectType">Tipe reject <span class="required">*</span></label>
+          <select id="rejectType" name="rejectType">
+            <option value="" disabled selected>Pilih tipe reject</option>
+          </select>
+        </div>
+
+        <div class="field checklist-wrap" id="checklistWrap" hidden>
+          <label>Langkah penanganan</label>
+          <p class="hint">Centang tiap langkah yang sudah dikerjakan.</p>
+          <div id="checklistItems" class="checklist"></div>
+        </div>
+
+        <div class="field status-wrap" id="statusWrap" hidden>
+          <label>Status akhir <span class="required">*</span></label>
+          <div class="status-choice" id="statusChoice">
+            <button type="button" class="status-btn" data-value="resolved">Selesai</button>
+            <button type="button" class="status-btn engineer" data-value="engineer">Belum</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Bukti foto <span class="required">*</span></label>
+          <input type="file" accept="image/*" capture="environment" id="photoInput" class="photo-input" />
+          <button type="button" class="photo-btn" id="photoBtn">
+            <span class="photo-icon" aria-hidden="true"></span>
+            <span>Ambil foto</span>
+          </button>
+          <div class="photo-preview" id="photoPreview" hidden>
+            <img id="photoImg" alt="Bukti foto" />
+            <div class="photo-actions">
+              <button type="button" id="retakeBtn" class="btn-icon">Ambil ulang</button>
+              <button type="button" id="removePhotoBtn" class="btn-icon">Hapus</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Catatan tambahan (opsional)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Tulis catatan tambahan di sini"></textarea>
+        </div>
+
+        <p class="form-error" id="formError" role="alert" hidden></p>
+      </form>
+    </main>
+
+    <div class="submit-bar">
+      <button type="submit" form="reportForm" class="submit-btn" id="submitBtn">Kirim</button>
+    </div>
+  </div>
+
+  <div class="page success-page" id="successPage" hidden>
+    <div class="success-card">
+      <div class="success-icon" id="successIcon">&#10003;</div>
+      <h1 class="success-title" id="successTitle">Laporan terkirim</h1>
+      <p class="success-text" id="successText">Laporan sudah tersimpan.</p>
+      <div class="success-summary" id="successSummary"></div>
+      <button type="button" class="submit-btn" id="newReportBtn">Buat laporan baru</button>
+      <button type="button" class="link-btn" id="endShiftBtn">Selesai shift / ganti operator</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "reject-report-form",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Main Assy reject report form (static HTML/CSS/JS, no build step)",
+  "scripts": {
+    "dev": "live-server --port=3000 --no-browser --ignorePattern=node_modules"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
